@@ -1,0 +1,19 @@
+<div class="contents-container" id="comment-container">
+  <h1>Add comment to {{video.title}}</h1>
+  <form action="/videos/{{video._id}}/comment/add" method="post">
+    <input type="hidden" name="video_id" value="{{video._id}}"/>
+    <div id="author">
+      {{#with comment.errors.author as |error|}}
+        <span class="error">{{error}}</span>
+      {{/with}}
+      <input type="text" placeholder="Author" name="author" id="author" value="{{comment.author}}" />
+    </div>
+    <div id="message">
+    {{#with comment.errors.message as |error|}}
+      <span class="error">{{error}}</span>
+    {{/with}}
+      <textarea placeholder="Message" name="message" id="message">{{comment.message}}</textarea>
+    </div>
+    <input type="submit" id="save-button" class="input-button" value="Add Comment">
+  </form>
+</div>
